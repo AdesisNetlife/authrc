@@ -71,7 +71,7 @@ The file must be read and written using [UTF-8][3] encoding
 
 #### File data schema 
 
-The file must be a well formed `[JSON][4]` object containing a set of properties which implement the `Host` config object.
+The file must be a well formed [JSON][4] object containing a set of properties which implement the `Host` config object.
 
 Here an example of a basic file
 
