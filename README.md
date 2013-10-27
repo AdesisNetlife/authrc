@@ -118,7 +118,7 @@ Supossing you have some service to downloads resources via HTTP and a Git reposi
 running on `my.server.org` and both are accesible via HTTP in the same hostname 
 and the same TCP port but in different path names, your .authrc should looks like:
 
-```
+```json
 {
     "my.server.org/downloads": { ... },
     "my.server.org/git": { ... }
