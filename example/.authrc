@@ -1,0 +1,44 @@
+{
+    "my.server.org": {
+        "username": "john",
+        "password": "mypl@inpa$sw0rd"
+    },
+    "my.server.org:8443/some/resource": {
+        "username": "tim",
+        "password": { 
+            "value": "6400ff3f33bec8481dc7ead8bb5294fe0ea4b690a9b6fecd1d029ec54b062ccf",
+            "cipher": "aes256"
+        }
+    },
+    "my.server.net": {
+        "username": "george",
+        "password": {
+            "value": "6400ff3f33bec8481dc7ead8bb5294fe0ea4b690a9b6fecd1d029ec54b062ccf",
+            "envKey": "MY_PASS_DECRYPTION_KEY",
+            "cipher": "aes256"
+        }
+    },
+    "http://my.server.org/some/resource": {
+        "username": "will",
+        "password": {
+            "envValue": "MY_SERVER_USER_PASSWORD",
+            "envKey": "MY_PASS_DECRYPTION_KEY",
+            "cipher": "blowfish"
+        }
+    },
+    "10.0.0.2": {
+        "username": "michael",
+        "password": {
+            "envValue": "MY_SERVER_USER_PASSWORD",
+            "cipher": "idea"
+        }
+    },
+    "172.16.5.1": {
+        "username": "bill",
+        "password": {
+            "value": "41b717a64c6b5753ed5928fd8a53149a7632e4ed1d207c91",
+            "envKey": "MY_DECRYPT_PASSWORD_KEY",
+            "cipher": "aes512"
+        }
+    }
+}
