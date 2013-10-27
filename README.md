@@ -4,6 +4,8 @@ Centralized authentication configuration and storage for network-based resources
 
 `Prototype version, work still in process`
 
+[![No more passwords!](http://img191.imageshack.us/img191/466/v6wa.png)](https://github.com/adesisnetlife/authrc)
+
 ## About
 
 `.authrc` aims to be a standard community well supported which provides a generic and centralized configuration file for authentication credentials management and storage that can be used by applications or services for network-based resources
@@ -17,8 +19,6 @@ Note that the specification is currently under active designing, which means tha
 Please take the above into account if you want to make your own implementation based on the standard
 
 ## Goals
-
-<img src="http://img191.imageshack.us/img191/466/v6wa.png" alt="No more password!" />
 
 - Easy to configure
 - Centralized
