@@ -71,7 +71,8 @@ The file must be read and written using [UTF-8][3] encoding
 
 #### File data schema 
 
-The file must be a well formed [JSON][4] object containing a set of properties which implement the `Host` config object.
+The file must be a well formed [JSON][4] object containing a set of 
+properties which implement the `Host` config object.
 
 Here an example of a basic file
 
@@ -85,8 +86,8 @@ Here an example of a basic file
 
 ##### Host value
 
-The `host` value can be any `string`
-That means any type of URI, URL or URN must be supported, with full a partial resource path.
+The `host` value can be any `string`, that means any type of URI, URL or URN 
+must be supported, with full a partial resource path.
 
 Here is some examples of possible `hosts` values
 
@@ -105,11 +106,17 @@ urn:issn:3613
 
 ##### Host naming considerations
 
-In some scenarios you need to have different authentication credentials for the same `hostname`, for example if there is a couple of services running in different ports.
+In some scenarios you need to have different authentication credentials for the same 
+`hostname`, for example if there is a couple of services running in different ports.
 
-In order to prevent incorrect use of authentication credentials in incorrect network resources, it is recommended to define the `host` value in the more explicit way as possible in order to prevent issues when the `host` matching algorithm tries to discover the appropriate credentials in your `authrc` file.
+In order to prevent incorrect use of authentication credentials in incorrect network 
+resources, it is recommended to define the `host` value in the more explicit way as 
+possible in order to prevent issues when the `host` matching algorithm tries to discover 
+the appropriate credentials in your `authrc` file.
 
-Supossing you have some service to downloads resources via HTTP and a Git repository running on `my.server.org` and both are accesible via HTTP in the same hostname and the same TCP port but in different path names, your .authrc should looks like:
+Supossing you have some service to downloads resources via HTTP and a Git repository 
+running on `my.server.org` and both are accesible via HTTP in the same hostname 
+and the same TCP port but in different path names, your .authrc should looks like:
 
 ```
 {
