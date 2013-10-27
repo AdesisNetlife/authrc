@@ -243,11 +243,13 @@ Only well-tested ciphers algorithms are supported. Choose whatever you prefer :)
 - IDEA
 - SEED
 
+All the above ciphers algorithms are suppored by [OpenSSL](http://www.openssl.org)
+
 ##### Block cipher operation mode
 
-All the encryption processes for all the cipher algorithm must be performed using the [CBC][1] operation mode.
+The encryption/decryption process for all the ciphers algorithms must be performed using the [CBC][1] operation mode.
 
-There is no plan to support [initialization vectors][2], it just adds a level of complexibility.
+There is no plan to support [initialization vectors][2], it just adds an unnecessary level of complexibility
 
 #### Possible security concerns
 
