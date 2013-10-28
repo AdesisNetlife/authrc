@@ -2,13 +2,19 @@
 
 Centralized authentication configuration and storage for network-based resources
 
-`Prototype version, work still in process`
+`Draft version, work still in process`
 
 [![No more passwords!](http://img191.imageshack.us/img191/466/v6wa.png)](https://github.com/adesisnetlife/authrc)
 
 ## About
 
 `.authrc` aims to be a standard community well supported which provides a generic and centralized configuration file for authentication credentials management and storage that can be used by applications or services for network-based resources
+
+### Community support
+
+Like any standard, it aims to be a well knowned solutions adopted for any type of software, language or platform for multiple purposes.
+
+`TODO`
 
 ## Stage
 
@@ -22,9 +28,10 @@ Please take the above into account if you want to make your own implementation b
 
 - Easy to configure
 - Centralized
+- Local installed
 - Secure (encrypted passwords with solid symmetric ciphers)
 - Full URI/URL/URN supporting any network resource type
-- Applications should implement it (transparent to the end user)
+- Applications can support it (transparent to the end user)
 - Platform independent
 
 ## Specification
@@ -37,7 +44,13 @@ The file must always be named `.authrc`
 
 #### File content format
 
-The file must be a well formed [JSON][4] object
+The file must be a well formed [JSON][4] object.
+
+There is not plan to support another format. Read the [FAQ](#faq) for more information
+
+**Why JSON format?**
+
+`TODO`
 
 #### File location
 
@@ -74,7 +87,7 @@ The file must be read and written using [UTF-8][3] encoding
 The file must be a well formed [JSON][4] object containing a set of 
 properties which implement the `Host` config object.
 
-Here an example of a basic file
+Here an basic file example
 
 ```json
 {
@@ -231,19 +244,23 @@ See [examples/](https://github.com/adesisnetlife/authrc/tree/master/examples) fo
 
 #### Supported ciphers algorithms
 
-Only well-tested ciphers algorithms are supported. Choose whatever you prefer :)
+Only well-tested symmetric ciphers algorithms are supported. 
+Choose whatever you prefer :)
 
-- AES 128
-- AES 192 (default)
+- AES 128 (default) 
 - AES 256
-- Blowfish
 - Camellia 128
 - Camellia 256
+- Blowfish
 - CAST
 - IDEA
 - SEED
 
 All the above ciphers algorithms are suppored by [OpenSSL](http://www.openssl.org)
+
+##### Encryption format
+
+All the password encrypted values must me post-encoded as `hexadecimal` based string
 
 ##### Block cipher operation mode
 
@@ -255,9 +272,38 @@ There is no plan to support [initialization vectors][2], it just adds an unneces
 
 `TODO`
 
+#### Password security recommendations
+
+`TODO`
+
 ## Implementations
 
 - [Node.js](https://github.com/h2non/node-authrc)
+
+## FAQ
+
+- **There is a plan to support another file format?**
+
+At the moment is only JSON format supported, however a possible new format support condidate will be `ini`.
+
+- **How my application can use the .authrc file?**
+
+You can use any of current oficial specification implementations or make your own implementation.
+
+Your application can have it
+
+- **There is a command-line support?**
+
+Yes. Most of the different language implementations have CLI support.
+
+See the [implementations](#implementations) section to see which are available.
+
+- **Where are the 160, 192, 224 bits symmetric keys support?**
+
+As you probably already know, in a practise there is not much usual to use different encryptions keys
+than 128 bits.
+
+128 bits key length provides a strong level of security, but if you are paranoid you can use 256 bits key length.
 
 ## Contributing
 
@@ -268,11 +314,13 @@ You can contribute in any of the next ways:
 - Using and expanding it :)
 - Opening an [issue](https://github.com/adesisnetlife/authrc/issues) with your proposals or improvements
 - Forking the repository and opening a PR with your proposals or improvements
-- Implementing the standard in a language (looking for implementation in Ruby, Python and C/C++)
+- Implementing the standard in a language (currenyl waiting for a Ruby, Python, Perl or C/C++ implementations)
 
 ## License
 
-Under MIT license
+Copyright (c) 2013 Adesis Netfile S.L
+Under MIT license.
+
 [1]: http://en.wikipedia.org/wiki/Block_cipher_mode_of_operation#Cipher-block_chaining_.28CBC.29
 [2]: http://en.wikipedia.org/wiki/Initialization_vector
 [3]: http://en.wikipedia.org/wiki/UTF-8
