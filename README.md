@@ -130,8 +130,8 @@ and the same TCP port but in different path names, your .authrc should looks lik
 
 #### Host matching algorithm
 
-The maching algorithm uses a partial comparison URI schema based and a
-string comparison letter by letter according with the proposed alogithm 
+The maching algorithm uses both partial comparison of the URI schema and a
+string comparison letter by letter according with the proposed algorithm 
 [An O(ND) Difference Algorithm][5] by Eugene W. Myers
 
 The following explains by detailed process about how the matching host algorithm must works:
