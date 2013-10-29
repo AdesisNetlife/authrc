@@ -20,9 +20,9 @@ Please take the above into account if you want to make your own implementation b
 
 ## Goals
 
-- Easy to configure
+- Simple and easy to configure
 - Centralized
-- Local installed
+- Locally stored
 - Secure (encrypted passwords with solid symmetric ciphers)
 - Full URI/URL/URN supporting any network resource type
 - Resource matching based on regular expressions 
@@ -78,7 +78,7 @@ The file must be read and written using [UTF-8][3] encoding
 The file must be a well formed [JSON][4] object containing a set of 
 properties which implement the `Host` config object.
 
-Here an basic file example
+Here a basic file example
 
 ```json
 {
@@ -92,7 +92,7 @@ Here an basic file example
 
 The `host` value must be a `string` containing any type of value, but usually you should define a full or partial URI schema
 
-Aditionally, an [regular expression][6] is supported like `host` value.
+Aditionally, a [regular expression][6] is supported like the `host` value.
 To use it, you need to wrap the `host` value with `/` character.
 
 Here are some examples about possible `hosts` values
@@ -124,7 +124,7 @@ the appropriate credentials in your `authrc` file.
 
 Supossing you have some service to downloads resources via HTTP and a Git repository 
 running on `my.server.org` and both are accesible via HTTP in the same hostname 
-and the same TCP port but in different path names, your .authrc should looks like:
+and the same TCP port but in different path names, your `.authrc` should looks like:
 
 ```json
 {
@@ -166,7 +166,7 @@ The following explains by detailed process about how the matching host algorithm
   Performs a string comparison between the URI port
     If there is no present port in both URIs, discard the process 
   Performs a string comparison between the URI protocol
-    If there is no present port in both URIs, dicard the process
+    If there is no present port in both URIs, discard the process
 
 TODO...
 ```
