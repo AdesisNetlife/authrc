@@ -145,17 +145,24 @@ The following explains by detailed process about how the matching host algorithm
 
 ```
 1.
-  Parse the string to match like a valid [URI](http://en.wikipedia.org/wiki/URI_scheme)
-  Extract the `hostname`
-
-2.
   Iterate all the existent hosts in `.authrc` file.
+
+1.1
+  Check if the `host` string value is a regex-like expression (starts and ends with '/')
+    If is a regex expression, validate it
+      If it is not valid, discard the host (optionally a info message or exception can be thrown)
+      If it is valid, use it
+    If it is NOT a regex `string` value 
+      Parse the string like a valid [URI](http://en.wikipedia.org/wiki/URI_scheme)
+         Then extract the `hostname`
+
+1.2
   Parse the `host` string value like a valid URI
-  Extract the `hostname`
+    Extract the `hostname`
 
 3.
   Performs a string comparison with both hostnames values (possible regex support?)
-  Filter by the matched hostname and discard the others
+    Filter by the matched hostname and discard the others
 
 4.
   If there is no any `host` matched, exit
@@ -167,6 +174,9 @@ The following explains by detailed process about how the matching host algorithm
     If there is no present port in both URIs, discard the process 
   Performs a string comparison between the URI protocol
     If there is no present port in both URIs, discard the process
+
+6. 
+  Return the matched `host` value
 
 TODO...
 ```
