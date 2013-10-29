@@ -10,12 +10,6 @@ Centralized authentication configuration and storage for network-based resources
 
 `.authrc` aims to be a standard community well supported which provides a generic and centralized configuration file for authentication credentials management and storage that can be used by applications or services for network-based resources
 
-### Community support
-
-Like any standard, it aims to be a well knowned solutions adopted for any type of software, language or platform for multiple purposes.
-
-`TODO`
-
 ## Stage
 
 Current version:  0.1-beta
@@ -47,10 +41,6 @@ The file must always be named `.authrc`
 The file must be a well formed [JSON][4] object.
 
 There is not plan to support another format. Read the [FAQ](#faq) for more information
-
-**Why JSON format?**
-
-`TODO`
 
 #### File location
 
@@ -140,7 +130,41 @@ and the same TCP port but in different path names, your .authrc should looks lik
 
 #### Host matching algorithm
 
-`TODO`
+The maching algorithm uses a partial comparison URI schema based and a
+string comparison letter by letter according with the proposed alogithm 
+[An O(ND) Difference Algorithm][5] by Eugene W. Myers
+
+The following explains by detailed process about how the matching host algorithm must works:
+
+`Note this is a draft version`
+
+```
+1.
+  Parse the string to match like a valid [URI](http://en.wikipedia.org/wiki/URI_scheme)
+  Extract the `hostname`
+
+2.
+  Iterate all the existent hosts in `.authrc` file.
+  Parse the `host` string value like a valid URI
+  Extract the `hostname`
+
+3.
+  Performs a string comparison with both hostnames values (possible regex support?)
+  Filter by the matched hostname and discard the others
+
+4.
+  If there is no any `host` matched, exit
+  If there is only one `hostname` matched, use it and exit
+  If there are more than one matched `hosts`, continue the process
+
+5. 
+  Performs a string comparison between the URI port
+    If there is no present port in both URIs, discard the process 
+  Performs a string comparison between the URI protocol
+    If there is no present port in both URIs, dicard the process
+
+TODO...
+```
 
 #### Host config object
 
@@ -194,7 +218,7 @@ interface HostPasswordEncrypted {
 }
 ```
 
-Encrypted password with environment variables variable value
+Encrypted password with environment variable value store
 
 ```
 interface HostPasswordEncryptedEnviroment {
@@ -203,7 +227,7 @@ interface HostPasswordEncryptedEnviroment {
 }
 ```
 
-Encrypted password with environment variables variable value
+Encrypted password with environment variable decryption key value store
 
 ```
 interface HostPasswordEncryptedEnviromentKey {
@@ -226,6 +250,8 @@ Implementations examples
     }
 }
 ```
+
+Environment variable encrypted password store
 ```json
 {
     "my.server.org": {
@@ -233,6 +259,19 @@ Implementations examples
         "password": {
             "envValue": "MY_ENCRYPTED_PASSWORD",
             "cipher": "aes256"
+        }
+    }
+}
+```
+
+In this case, it should use the default algorithm `AES128`
+```json
+{
+    "my.server.org": {
+        "username": "john",
+        "password": {
+            "value": "41b717a64c6b5753ed5928fd8a53149a7632e4ed1d207c91",
+            "encrypted": true
         }
     }
 }
@@ -282,6 +321,13 @@ There is no plan to support [initialization vectors][2], it just adds an unneces
 
 ## FAQ
 
+- **Why JSON?**
+
+[JSON][4] is a well supported, simple and consistent format for data interchange.
+Its estricness about how the format must be defined is good in order to remove inconsiscy with data.
+
+`TODO` 
+
 - **There is a plan to support another file format?**
 
 At the moment is only JSON format supported, however a possible new format support condidate will be `ini`.
@@ -298,7 +344,20 @@ Yes. Most of the different language implementations have CLI support.
 
 See the [implementations](#implementations) section to see which are available.
 
-- **Where are the 160, 192, 224 bits symmetric keys support?**
+- **Hosts names can be `regex` expressions?**
+
+Not at the moment, but it's a really good idea.
+
+If you have a specific proposal about how to implementation it properly, open an issue and explain it :)
+
+- **The host matching algorithm is robust?**
+
+Probably is not the best solution to the problem, but it's a temporal good solution.
+
+The current algorithm was well tested with some different URIs types and schemas and its works fine,
+however, more test cases is required. Note this stills a draft specification.
+
+- **What about the 160, 192, 224 bits symmetric keys support?**
 
 As you probably already know, in a practise there is not much usual to use different encryptions keys
 than 128 bits.
@@ -339,3 +398,4 @@ Code under MIT license.
 [2]: http://en.wikipedia.org/wiki/Initialization_vector
 [3]: http://en.wikipedia.org/wiki/UTF-8
 [4]: http://es.wikipedia.org/wiki/JSON
+[5]: http://citeseerx.ist.psu.edu/viewdoc/summary?doi=10.1.1.4.6927
