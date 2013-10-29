@@ -25,6 +25,7 @@ Please take the above into account if you want to make your own implementation b
 - Local installed
 - Secure (encrypted passwords with solid symmetric ciphers)
 - Full URI/URL/URN supporting any network resource type
+- Resource matching based on regular expressions 
 - Applications can support it (transparent to the end user)
 - Platform independent
 
@@ -89,10 +90,12 @@ Here an basic file example
 
 ##### Host value
 
-The `host` value can be any `string`, that means any type of URI, URL or URN 
-must be supported, with full a partial resource path.
+The `host` value must be a `string` containing any type of value, but usually you should define a full or partial URI schema
 
-Here is some examples of possible `hosts` values
+Aditionally, an [regular expression][6] is supported like `host` value.
+To use it, you need to wrap the `host` value with `/` character.
+
+Here are some examples about possible `hosts` values
 
 ```
 http://my.server.org
@@ -105,6 +108,8 @@ ftp://ftp.server.org
 git://my.repo.org/path/to/repo.git
 file://home/user/server
 urn:issn:3613
+/(*.).server.org/
+/[a-z0-9]+.server.org/
 ```
 
 ##### Host naming considerations
@@ -344,9 +349,9 @@ Yes. Most of the different language implementations have CLI support.
 
 See the [implementations](#implementations) section to see which are available.
 
-- **Hosts names can be `regex` expressions?**
+- **Hosts names can be full `regex` expressions?**
 
-Not at the moment, but it's a really good idea.
+Yes. Only be ware about escape characters. There will proce
 
 If you have a specific proposal about how to implementation it properly, open an issue and explain it :)
 
@@ -397,3 +402,4 @@ Free Documentation License".
 [3]: http://en.wikipedia.org/wiki/UTF-8
 [4]: http://es.wikipedia.org/wiki/JSON
 [5]: http://citeseerx.ist.psu.edu/viewdoc/summary?doi=10.1.1.4.6927
+[6]: http://en.wikipedia.org/wiki/Regular_expression
