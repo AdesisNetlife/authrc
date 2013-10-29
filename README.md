@@ -373,17 +373,16 @@ You can contribute in any of the next ways:
 - Using and expanding it :)
 - Opening an [issue](https://github.com/adesisnetlife/authrc/issues) with your proposals or improvements
 - Forking the repository and opening a PR with your proposals or improvements
-- Implementing the standard in a language (currenyl waiting for a Ruby, Python, Perl or C/C++ implementations)
+- Implementing the standard in a language (looking for a Ruby, Python, Perl or C/C++ implementation)
 
 ## License
 
 Copyright (c) 2013 Adesis Netfile S.L
 
+Code under MIT license.
 Specification documentation under the [GNU Free Documentation License](http://www.gnu.org/licenses/fdl-1.3-standalone.html).
 
 ```
-Copyright (c) 2013 Adesis Netfile S.L
-
 Permission is granted to copy, distribute and/or modify this document
 under the terms of the GNU Free Documentation License, Version 1.3
 or any later version published by the Free Software Foundation;
@@ -392,7 +391,6 @@ A copy of the license is included in the section entitled "GNU
 Free Documentation License".
 ```
 
-Code under MIT license.
 
 [1]: http://en.wikipedia.org/wiki/Block_cipher_mode_of_operation#Cipher-block_chaining_.28CBC.29
 [2]: http://en.wikipedia.org/wiki/Initialization_vector
