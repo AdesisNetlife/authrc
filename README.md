@@ -176,7 +176,7 @@ The following explains by detailed process about how the matching host algorithm
     If there is no present port in both URIs, discard the process
 
 6. 
-  Return the matched `host` value
+  Return the matched `host value
 
 TODO...
 ```
