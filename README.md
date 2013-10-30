@@ -413,14 +413,15 @@ There is no plan to support [initialization vectors][2], it just adds an unneces
 
 #### Security
 
-First of all, if you use `.authrc`, you need to assume your machine is a secure environment
+First of all, if you use `.authrc`, it is assumed your machine is a secure environment
 
-`.authrc` proposal does not guarantee any type of aditional level of security, all it is dependening 
-of you personal security prevention and how do you safety store your decryption keys.
+`.authrc` proposal does not guarantee any type of aditional level of security, all it is depending 
+of you personal security prevention and how do you safety store your decryption keys
 
-`.authrc` was created with the idea of practicity in mind.
+`.authrc` was created with the idea of practicity in mind like first class priority and then the security
 
-If you are a security paranoic, you can encrypt/decrypt the whole file by your way
+If you are paranoic and you want to add an aditional level security,
+you can encrypt/decrypt the whole file by your own way
 
 #### Security recommendations
 
@@ -442,8 +443,8 @@ Currently looking for Java, Python, Ruby and C/C++ implementations
 
 - **There is a plan to encrypt the whole .authrc file?**
 
-Not at the moment, however you can encrypt/decrypt the whole file by your way
-adding a higher security level
+Not at the moment, but the idea is opened, however you can encrypt/decrypt 
+the whole file by your way adding a more security level
 
 - **There is a plan to support another file format?**
 
