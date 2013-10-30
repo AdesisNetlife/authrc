@@ -154,7 +154,7 @@ for example avoiding the wilcard helper operator `(*.)`
 
 ##### Host naming examples
 
-Here are some valid examples about `hosts` values
+Here are some valid `host` values examples
 
 ```
 http://my.server.org
