@@ -207,7 +207,7 @@ host algorithm must be implemented:
 
 ```
 0.
-  Get all the existent hosts in `.authrc` file (first level object property keys)
+  Get all the existent hosts in `.authrc` file (the first level object property key)
 
 1. 
   Iterate all the found hosts in authrc
