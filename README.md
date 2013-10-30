@@ -142,13 +142,13 @@ Aditionally, a valid [regular expression][6] is supported like the `host` value.
 
 To define a host like regular expression, you need to wrap the `host` value with `/` characters.
 
-The hosts matching must be case-insentive.
+The hosts matching must be always case-insensitive.
 
 `regulars expressions` support was added in order to avoid redundancy in your `.authrc`
-and for support more complex `host` definitions for particular cases.
+and to support more complex `host` definitions for particular cases.
 
 You should take care about how do you define a host-like `regular expression`. 
-It is recommended you define a more explicit regex as you can in order 
+It is recommended you define a more explicit `regex` as you can in order 
 to prevent abiguity during the host matching process,
 for example avoiding the wilcard helper operator `(*.)`
 
@@ -166,7 +166,7 @@ https://172.16.0.1:8080
 ftp://ftp.server.org
 git://my.repo.org/path/to/repo.git
 file://home/user/server
-urn:issn:3613
+urn:myhost:1234
 /http[s]://(\w.).server.org/
 /[a-z0-9]+.server.org/
 ```
