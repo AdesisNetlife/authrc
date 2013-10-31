@@ -51,6 +51,7 @@ Please take the above into account if you want to make your own implementation b
   * [Supported ciphers algorithms](#supported-ciphers-algorithms)
     * [Encryption output format](#encryption-format)
     * [Block cipher operation mode](#block-cipher-operation-mode)
+  * [Security](#security)
   * [Security recommendations](#security-recommendations)
 - [Implementations](#implementations)
 - [FAQ](#faq)
@@ -268,9 +269,11 @@ host algorithm must be implemented:
 The `host` config object its were the autentication credentials will be stored. 
 Basically it is an object with two properties: `username` and `password`
 
-Each `host` object must implement one of the following interfaces:
+##### Interfaces
 
-##### Raw password
+Each `host` object must implement one of the following interfaces
+
+###### Raw password
 
 ```
 interface HostAuthRaw {
@@ -290,7 +293,7 @@ Implementation example
 }
 ```
 
-##### Encrypted password
+###### Encrypted password
 
 ```
 interface HostAuthEncrypted {
