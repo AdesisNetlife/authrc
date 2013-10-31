@@ -51,7 +51,7 @@ Please take the above into account if you want to make your own implementation b
       * [Encrypted password](#encrypted-password)
 - [Password encryption](#password-encryption)
   * [Supported ciphers algorithms](#supported-ciphers-algorithms)
-    * [Encryption encoding](#encyption-encoding)
+    * [Encoding](#encoding)
     * [Encryption output format](#encryption-format)
     * [Block cipher operation mode](#block-cipher-operation-mode)
   * [Security](#security)
@@ -405,7 +405,7 @@ Choose whatever you prefer :)
 
 All the above ciphers algorithms are well suppored by [OpenSSL](http://www.openssl.org)
 
-##### Encryption encoding
+##### Encoding
 
 The encryption/decryption process must done always using [UTF-8][3] encoding
 
