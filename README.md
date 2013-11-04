@@ -4,19 +4,17 @@ Centralized authentication configuration and storage for network-based resources
 
 `Draft version, work in process`
 
-[![No more passwords!](http://img191.imageshack.us/img191/466/v6wa.png)](https://github.com/adesisnetlife/authrc)
+[![No more passwords!](http://img191.imageshack.us/img191/466/v6wa.png)](https://github.com/adesisnetlife/authrc) 
 
 ## About
 
-`.authrc` aims to be a standard community well supported which provides a generic and centralized configuration file for authentication credentials management and storage that can be used by applications or services for network-based resources
+`.authrc`provides a generic and centralized configuration file for authentication credentials management and storage, that can be used by any application or service for network-based resources. It aims to be a standard adopted by the community
 
 ## Stage
 
 Current version: 0.1
 
-Note that the specification is currently under active designing, which means that notorious changes can be done during the process
-
-Please take the above into account if you want to make your own implementation based on this specification standard
+Note that the specification is currently under active designing, which means that notorious changes can be done in a few future.
 
 ## Goals
 
@@ -26,7 +24,7 @@ Please take the above into account if you want to make your own implementation b
 - Secure (encrypted passwords with solid symmetric ciphers)
 - Full URI/URL/URN supporting any network resource type
 - Resource matching based on regular expressions or string matching
-- Any applications can easly support it
+- Any type of application can easily support it
 - Platform independent
 
 # Specification
@@ -67,25 +65,24 @@ Please take the above into account if you want to make your own implementation b
 
 The file must always be named `.authrc`.
 
-This is important because removes the ambiguity and helps to discover the file based on a standarized name.
+This is important because it removes the ambiguity and helps to discover the file based on a standardized name.
 
 #### File format
 
 The file content must be a well formed [JSON][4]
 
-JSON is a general purpose well knowed data change information format. 
+JSON is a general purpose well known data change information format. 
 It is simple, easy to read, edit and parse.
 
-Like `.authrc` can be edited manually, it's necessary to prevent format ambiguity sintax and the
-stricness part of the JSON sintax it is ideally in order to prevent problems when parse the file,
-like another formats like YAML or INI
+Like `.authrc` it can be edited manually. It's necessary to prevent format ambiguity syntax.
+The strict part of the JSON syntax it is ideal in order to prevent problems when the file is parsed and when it is edited manually, maybe like other formats like `YAML` or `ini`.
 
-There is not plan to support another format. Please, read the [FAQ](#faq) for more information
+There is not a plan to support another format. Please, read the [FAQ](#faq) for more information
 
 #### File location
 
 The general standard pretension is to have just a unique `.authrc` file for the whole system, 
-however in some scenarios this is not the best choice or is simply impossible.
+however in some scenarios this is not the best choice or it’s simply impossible.
 
 By default, the `.authrc` file should be located at `$HOME` or `%USERPROFILE%` path directory, 
 but you can store it wherever you want.
@@ -125,7 +122,7 @@ properties containing the `Host` value and which implement the `Host` config obj
 }
 ```
 
-Here a basic file example
+Here’s a basic file example
 
 ```json
 {
@@ -151,14 +148,14 @@ The hosts matching must be always case-insensitive.
 `regulars expressions` support was added in order to avoid redundancy in your `.authrc`
 and to support more complex `host` definitions for particular cases.
 
-You should take care about how do you define a host-like `regular expression`. 
-It is recommended you define a more explicit `regex` as you can in order 
-to prevent abiguity during the host matching process,
-for example avoiding the wilcard helper operator `(*.)`
+You should be careful when it comes to defining a host-like `regular expression`. 
+It is recommended that you define as more explicit `regex` as you can in order 
+to prevent ambiguity during the host matching process, 
+for example avoiding the wild card helper operator `(*.)`
 
 ##### Host naming examples
 
-Here are some valid `host` values examples
+Here there are some valid `host` values examples
 
 ```
 http://my.server.org
@@ -185,10 +182,10 @@ resources, it is recommended to define the `host` value in the more explicit way
 possible in order to prevent issues when the `host` matching algorithm tries to discover 
 the appropriated credentials in your `authrc` file.
 
-Imagine you have s service to downloads resources via HTTP and a Git repository, 
+Imagine you have a service to downloads resources via HTTP and a Git repository, 
 both running on `my.server.org`, both of them are accesible via HTTP, under the same resolution hostname
-and the same TCP port, but the only difference between is they are accesible 
-under different server path names, so your `.authrc` should looks like:
+and the same TCP port, but the only difference between them is that they are accessible 
+under different server path names, so your `.authrc` should look like:
 
 ```json
 {
@@ -201,36 +198,37 @@ under different server path names, so your `.authrc` should looks like:
 
 `Note this is a draft version, improvement and contributions are welcome`
 
-The maching algorithm uses both partial comparison of a individual parts of 
-an URI schema, and aditionally, a more deep matching based on a string 
+The matching algorithm uses both partial comparison of individual parts of 
+an URI schema and, secondly, a more deep matching based on a string 
 comparison letter by letter, according with the proposed algorithm 
 [An O(ND) Difference Algorithm][5] by Eugene W. Myers
 
-The following explains the detailed process about how the matching 
+What follows explains the detailed process of how the matching 
 host algorithm must be implemented:
 
 ```
 0.
-  Get all the existent hosts in `.authrc` file (the first level object property key)
+  Get all the existent hosts in `.authrc` file (first level object properties)
+     If there is no hosts, exit the process
 
 1. 
-  Iterate all the found hosts in authrc
+  Iterate all the existent properties
 
 1.1
   Check if the `host` string value is a regex-like expression (starts and ends with '/')
-    If is a regex expression, validate it
+    If it is a regex expression, validate it
       If it is not valid, discard the host
       If it is valid, continue
     If it is NOT a regex `string` value 
       Parse the string like a valid URI (if it is not a valid URI, assume the existent value is the hostname)
-        If valid and the value is not empty
+        If it is valid and the value is not empty
            Then extract the `hostname`
-        If invalid, discard the host
+        If it is invalid, discard the host
 
 1.2 
   Iterate each valid host, matching with the search string to match
-    If is a regex, test it with the search string to match
-      If the regex test success
+    If it is a regex, test it with the search string to match
+      If the regex test succeed
         Set the host as matched
       If the regex test fails
         Discard the host
@@ -239,15 +237,15 @@ host algorithm must be implemented:
         Parse both host value and search string to match like a valid URI
           Extract the port and protocol form the URI in both
             Performs a comparison between port and protocol values
-              If at least one value are equal
+              If at least one value is equal
                 Set as matched host
-              If no any equality
+              If there is not any equality
                 Discard the host
     Continue with the next host
 
 1.3
   Get the list of the current matched hosts
-    If there is no any matched host from 1.2 process
+    If there is not any matched host from 1.2 process
       Get the valid hosts from 1.1 process
         Discard the regex type host values
           Performs a string comparison by letter for each host (using An O(ND) Difference Algorithm)
@@ -263,13 +261,13 @@ host algorithm must be implemented:
               Mark it as the found host
 
 2. 
-  Finally return the matched host value
+  Finally, return the matched host value
 
 ```
 
 #### Host config object
 
-The `host` config object its were the autentication credentials will be stored. 
+The `host` config object it’s where the authentication credentials will be stored. 
 Basically it is an object with two properties: `username` and `password`
 
 Each `host` object must implement one of the following interfaces
@@ -385,7 +383,7 @@ See [examples/](https://github.com/adesisnetlife/authrc/tree/master/examples) fo
 
 ### Password encryption
 
-Password encryption must be suppored by all the implementations.
+Password encryption must be supported by all the implementations.
 The encrypted value, as it is defined above, can be stored in `.authrc` at the `password.value` property,
 or stored in an environment variable at the `password.envValue` property
 
@@ -403,15 +401,15 @@ Choose whatever you prefer :)
 - IDEA
 - SEED
 
-All the above ciphers algorithms are well suppored by [OpenSSL](http://www.openssl.org)
+All the above ciphers algorithms are well supported by [OpenSSL](http://www.openssl.org)
 
 ##### Encoding
 
-The encryption/decryption process must done always using [UTF-8][3] encoding
+The encryption/decryption process must be always done using [UTF-8][3] encoding
 
 ##### Encryption output format
 
-All the password encrypted values must me post-encoded as `hexadecimal` value string
+All the password encrypted values must be post-encoded as `hexadecimal` value string
 
 ##### Block cipher operation mode
 
@@ -421,25 +419,25 @@ There is no plan to support [initialization vectors][2], it just adds an unneces
 
 #### Security
 
-First of all, if you use `.authrc`, it is assumed your machine is a secure environment
+First of all, if you use `.authrc`, it is assumed that your machine is a secure environment
 
-`.authrc` proposal does not guarantee any type of aditional level of security, all it is depending 
-of you personal security prevention and how do you safety store your decryption keys
+`.authrc` proposal does not guarantee any type of additional level of security, it all depends
+on your personal security prevention and how you store your decryption keys
 
-`.authrc` was created with the idea of practicity in mind like first class priority and then the security
+`.authrc` was created to be practical in the first place while security comes after
 
-If you are paranoic and you want to add an aditional level security,
-you can encrypt/decrypt the whole file by your own way
+If you are paranoic and you want to add an additional level of security,
+you can encrypt/decrypt the whole file by your own way.
 
 #### Security recommendations
 
 - Avoid store passwords in plain format, use encryption instead
 - For environment variable decryption key, define it by prompt input at each new shell session
-- You should take care about how and where do you store your password decryption keys
-- Set your authrc file permissions to be only readable by you
-- Use different ciphers and differents keys for shared passwords across different hosts
+- You should be careful about how and where you store your password decryption keys
+- Set your `authrc` file permissions to be only readable by you
+- Use different ciphers and different keys for shared passwords across different hosts
 
-[Here][8] is more information about password strength and recomendations
+[Here][8] is more information about password strength and recommendations
 
 ## Implementations
 
@@ -449,50 +447,52 @@ Currently looking for Java, Python, Ruby and C/C++ implementations
 
 ## FAQ
 
-- **There is a plan to encrypt the whole .authrc file?**
+- **Is it planned to encrypt the whole .authrc file?**
 
-Not at the moment, but the idea is opened, however you can encrypt/decrypt 
-the whole file by your way adding a more security level
+Not at the moment, but the idea is open. However, you can encrypt/decrypt 
+the whole file yourself adding the additional desired security level
 
-- **There is a plan to support another file format?**
+- **Is it planned to support another file format?**
 
-At the moment is only JSON format supported, however in a future it can support more.
+At the moment only JSON format is supported, however in a future it will support more.
 
 If you have a good one in mind for this proposal, please share it :)
 
-- **How my application can use the .authrc file?**
+- **How can I do if I have the same credentials for more than one host?**
 
-You can use any of current official specification implementations or make your own.
+You should copy the whole credentials.
+Maybe `host` alias will be supported in a near future. Proposals for this are welcome. 
 
-Your application can have it
+- **How my application can use the `.authrc` file?**
 
-- **There is a command-line support?**
+You can use any of the current official specification implementations for your programming language or make your own.
+
+- **Is there a command-line support?**
 
 Yes. Most of the implementations should have a full featured CLI support for basic `.authrc` file manipulation
 
 See the [implementations](#implementations) section to see which are available.
 
-- **Host names values can be full `regex` compatible?**
+- **Can host names values be full `regex` compatible?**
 
-Yes. You only should be aware about escape characters or bad formed expressions 
+Yes. Just be careful about escape characters or bad formed expressions 
 and keep in mind to define your expression as more explicit as possible
 
 You can check you expression [here][7]
 
-- **The host matching algorithm is robust?**
+- **Is the host matching algorithm robust?**
 
 Probably it is not the best solution to the problem, but it is a first good solution.
 
-The current algorithm was well tested with some different URIs types and schemas and its works as expected,
-however, more test cases is required. 
+The current algorithm was well tested with some different URIs types and schemas and it works as expected,
+however, more test cases are required. 
 
 Note that this still a draft specification. 
-If you have a proposal or you experiment issues, please open an issue explaning it
+If you have a proposal to improve it, please feel free to make it
 
 - **What about the 160, 192, 224 bits symmetric keys support?**
 
-As you probably already know, in a practise world there is not too much usual to use different encryptions keys
-than 128 or 256 bits.
+As you probably already know, in a practise world there is not very usual to use different encryptions keys than 128 or 256 bits.
 
 128 bits key length provides a strong level of security, but if you are paranoid you can use 256 bits key length.
 
@@ -517,9 +517,8 @@ You can contribute in any of the next ways:
 
 ## License
 
-Copyright (c) 2013 Adesis Netfile S.L
+Copyright (c) 2013 Adesis Netlife S.L
 
-Code under MIT license.
 Specification documentation under the [GNU Free Documentation License](http://www.gnu.org/licenses/fdl-1.3-standalone.html).
 
 ```
