@@ -1,5 +1,9 @@
 # Change History
 
+- 0.1.2 `02.11.2013`
+
+  * Documentation general improvements
+
 - 0.1.1 `30.10.2013`
 
   * Redefined host matching algorithm
