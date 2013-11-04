@@ -1,8 +1,8 @@
 # Change History
 
-- 0.1.2 `02.11.2013`
+- 0.1.2 `04.11.2013`
 
-  * Documentation general improvements
+  * General documentation improvements
 
 - 0.1.1 `30.10.2013`
 
