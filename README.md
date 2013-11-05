@@ -22,7 +22,7 @@ Note that the specification is currently under active designing, which means tha
 - Centralized
 - Locally stored
 - Secure (encrypted passwords with solid symmetric ciphers)
-- Full URI/URL/URN supporting any network resource type
+- Full URI/URL supporting any network resource type
 - Resource matching based on regular expressions or string matching
 - Any type of application can easily support it
 - Platform independent
@@ -166,9 +166,7 @@ amazing.host
 https://172.16.0.1:8080
 ftp://ftp.server.org
 git://my.repo.org/path/to/repo.git
-file://home/user/server
-urn:myhost:1234
-/http[s]://(\w.).server.org/
+/http[s]?://(\w.).server.org/
 /[a-z0-9]+.server.org/
 ```
 
