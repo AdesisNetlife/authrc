@@ -175,7 +175,7 @@ git://my.repo.org/path/to/repo.git
 In some scenarios you need to have different authentication credentials for the same 
 `hostname`, for example if there are a couple of services running in different ports.
 
-In order to prevent incorrect use of authentication credentials for incorrect network 
+In order to prevent incorrect use of authentication credentials for bad network 
 resources, it is recommended to define the `host` value in the more explicit way as 
 possible in order to prevent issues when the `host` matching algorithm tries to discover 
 the appropriated credentials in your `authrc` file.
