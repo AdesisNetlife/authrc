@@ -196,7 +196,9 @@ under different server path names, so your `.authrc` should look like:
 
 `Note this is a draft version, improvement and contributions are welcome`
 
-The matching algorithm uses both partial comparison of individual parts of 
+There are two different matching processes, one for `regex-like` and another one for `string-like` matching.
+
+The `string-like` matching algorithm uses both partial comparison of individual parts of 
 an URI schema and, secondly, a more deep matching based on a string 
 comparison letter by letter, according with the proposed algorithm 
 [An O(ND) Difference Algorithm][5] by Eugene W. Myers
