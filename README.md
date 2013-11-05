@@ -180,7 +180,7 @@ resources, it is recommended to define the `host` value in the more explicit way
 possible in order to prevent issues when the `host` matching algorithm tries to discover 
 the appropriated credentials in your `authrc` file.
 
-Imagine you have a service to downloads resources via HTTP and a Git repository, 
+Imagine you have a service to download resources via HTTP and a Git repository, 
 both running on `my.server.org`, both of them are accesible via HTTP, under the same resolution hostname
 and the same TCP port, but the only difference between them is that they are accessible 
 under different server path names, so your `.authrc` should look like:
