@@ -339,7 +339,7 @@ interface HostPasswordEncryptedEnviromentKey {
 }
 ```
 
-**Implementations examples**
+**Implementation examples**
 
 ```json
 {
