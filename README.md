@@ -434,6 +434,7 @@ you can encrypt/decrypt the whole file by your own way.
 - You should be careful about how and where you store your password decryption keys
 - Set your `authrc` file permissions to be only readable by you
 - Use different ciphers and different keys for shared passwords across different hosts
+- You should avoid that your `.authrc` be tracked by any SCM
 
 [Here][8] is more information about password strength and recommendations
 
