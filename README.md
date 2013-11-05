@@ -366,6 +366,20 @@ Environment variable encrypted password store
 }
 ```
 
+Environment variable decryption key store
+```json
+{
+    "my.server.org": {
+        "username": "john",
+        "password": {
+            "value": "41b717a64c6b5753ed5928fd8a53149a7632e4ed1d207c91",
+            "envKey": "MY_SECRET_DECRYPT_KEY",
+            "cipher": "aes256"
+        }
+    }
+}
+```
+
 In this case, it should use the default algorithm `AES128`
 ```json
 {
