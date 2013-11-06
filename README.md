@@ -209,23 +209,32 @@ host algorithm must be implemented:
 ```
 0.
   Get all the existent hosts in `.authrc` file (first level object properties)
-     If there is no hosts, exit the process
+    If there is no hosts, exit the process
 
 1. 
+  Parse the search string to match like a valid URI
+    If it is not a valid URI, assume the existent value is the hostname
+    Store the parsed value
+  
+2. 
   Iterate all the existent properties
+  
 
-1.1
+2.1
   Check if the `host` string value is a regex-like expression (starts and ends with '/')
     If it is a regex expression, validate it
       If it is not valid, discard the host
       If it is valid, continue
-    If it is NOT a regex `string` value 
+    If it is NOT a regex-like string value 
       Parse the string like a valid URI (if it is not a valid URI, assume the existent value is the hostname)
         If it is valid and the value is not empty
-           Then extract the `hostname`
+          Then extract the `hostname`
+            Performs a string comparison between hostnames values
+              If the hostnames matches, set like a valid host
+              If not match, discard the host
         If it is invalid, discard the host
 
-1.2 
+2.2 
   Iterate each valid host, matching with the search string to match
     If it is a regex, test it with the search string to match
       If the regex test succeed
@@ -234,16 +243,18 @@ host algorithm must be implemented:
         Discard the host
     If it is NOT a regex
       Parse like a valid URI
-        Parse both host value and search string to match like a valid URI
+        Parse host string value like a valid URI
           Extract the port and protocol form the URI in both
             Performs a comparison between port and protocol values
               If at least one value is equal
                 Set as matched host
-              If there is not any equality
+              If there is not an equality
                 Discard the host
+            If port or protocol values do not exists in any processed hosts
+              Set all as matched (it is required a deep comparison)
     Continue with the next host
 
-1.3
+2.3
   Get the list of the current matched hosts
     If there is not any matched host from 1.2 process
       Get the valid hosts from 1.1 process
@@ -260,7 +271,7 @@ host algorithm must be implemented:
             Get the host with minor letters differences returned by the algorithm
               Mark it as the found host
 
-2. 
+3. 
   Finally, return the matched host value
 
 ```
