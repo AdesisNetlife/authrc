@@ -1,6 +1,6 @@
 # Change History
 
-- 0.1.2 `06.11.2013`
+- 0.1.3 `06.11.2013`
 
   * Host matching algorithm improments
   * General spec minor improvements
