@@ -79,7 +79,7 @@ JSON is a general purpose well known data change information format.
 It is simple, easy to read, edit and parse.
 
 Like `.authrc` can be edited manually, it's necessary to prevent format ambiguity syntax.
-The strict part of the JSON syntax is ideal because it prevents problems when the file is parsed and when it is edited manually: it’s probably the better than formats like `YAML` or `ini`.
+The strict part of the JSON syntax is ideal because it prevents problems when the file is parsed and when it is edited manually: mmaybe opinionated, but it’s probably the better than formats like `YAML` or `ini`.
 
 There is not a plan to support another format. Please, read the [FAQ](#faq) for more information
 
