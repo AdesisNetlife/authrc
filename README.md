@@ -10,6 +10,10 @@ Centralized authentication configuration and storage for network-based resources
 
 `.authrc`provides a generic and centralized configuration file for authentication credentials management and storage, that can be used by any application or service for network-based resources. It aims to be a standard adopted by the community
 
+## The need
+
+In a large scale companies, 
+
 ## Stage
 
 Current version: 0.1
@@ -25,11 +29,11 @@ Note that the specification is currently under active designing, which means tha
 - Full URI/URL supporting any network resource type
 - Resource matching based on regular expressions or string matching
 - Any type of application can easily support it
-- Platform independent
+- Platform/language independent
 
 # Specification
 
-## Table of contents
+## Table of Content
 
 - [Configuration file](#configuration-file)
   * [Name](#file-name)
@@ -461,7 +465,7 @@ you can encrypt/decrypt the whole file by your own way.
 - You should be careful about how and where you store your password decryption keys
 - Set your `authrc` file permissions to be only readable by you
 - Use different ciphers and different keys for shared passwords across different hosts
-- You should avoid that your `.authrc` be tracked by a SCM
+- You should avoid that your `.authrc` be tracked by a SCM (unless you know what you are doing)
 
 [Here][8] is more information about password strength and recommendations
 
@@ -522,7 +526,7 @@ As you probably already know, in a practise world there is not very usual to use
 
 128 bits key length provides a strong level of security, but if you are paranoid you can use 256 bits key length.
 
-- **Can I encrypt the user name also?**
+- **Can I encrypt the user name?**
 
 No. Really?
 
