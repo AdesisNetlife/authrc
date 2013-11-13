@@ -10,10 +10,6 @@ Centralized authentication configuration and storage for network-based resources
 
 `.authrc`provides a generic and centralized configuration file for authentication credentials management and storage, that can be used by any application or service for network-based resources. It aims to be a standard adopted by the community
 
-## The need
-
-In a large scale companies, 
-
 ## Stage
 
 Current version: 0.1
