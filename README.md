@@ -27,6 +27,10 @@ Note that the specification is currently under active designing, which means tha
 - Any type of application can easily support it
 - Platform/language independent
 
+## Wish list
+
+- Support for oAuth?
+
 # Specification
 
 ## Table of Content
