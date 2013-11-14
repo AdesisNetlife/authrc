@@ -33,7 +33,7 @@ Note that the specification is currently under active designing, which means tha
 
 # Specification
 
-## Table of Content
+## Table of Contents
 
 - [Configuration file](#configuration-file)
   * [Name](#file-name)
