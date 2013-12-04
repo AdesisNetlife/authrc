@@ -30,6 +30,7 @@ Note that the specification is currently under active designing, which means tha
 ## Wish list
 
 - Support for oAuth?
+- Support for `ini` format?
 
 # Specification
 
