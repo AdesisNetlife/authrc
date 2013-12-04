@@ -2,7 +2,7 @@
 
 Centralized authentication configuration and storage for network-based resources
 
-`Draft version, work in process`
+`Draft version`
 
 [![No more passwords!](http://img191.imageshack.us/img191/466/v6wa.png)](https://github.com/adesisnetlife/authrc) 
 
